@@ -18,6 +18,16 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
+if command -v nvm >dev/null 2>&1; then
+  echo "Bootstrapping node"
+
+  if command -v npm >/dev/null 2>&1; then
+    npm install -g vsce
+  fi
+
+  nvm install 'lts/*' --reinstall-packages-from=current
+fi
+
 if [ -d "$HOME/.vscode" ]; then
   echo "Installing manual VSCode extensions"
 
