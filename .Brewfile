@@ -1,3 +1,5 @@
+brew "bat"
+brew "ccat"
 brew "diff-so-fancy"
 brew "dog"
 brew "dust"
