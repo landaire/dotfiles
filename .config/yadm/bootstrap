@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
@@ -16,16 +17,20 @@ if [ "$system_type" = "Darwin" ]; then
     brew bundle --global
   fi
 
+  # Ensure the PATH is up to date
+  export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+
 fi
 
-if command -v nvm >dev/null 2>&1; then
+if command -v nvm >/dev/null 2>&1; then
   echo "Bootstrapping node"
+
+  nvm install 'lts/*' --reinstall-packages-from=current
 
   if command -v npm >/dev/null 2>&1; then
     npm install -g vsce
   fi
 
-  nvm install 'lts/*' --reinstall-packages-from=current
 fi
 
 if [ -d "$HOME/.vscode" ]; then
