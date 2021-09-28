@@ -14,7 +14,7 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
-if command -v vim >/dev/null 2>&1; then
+if command -v nvim >/dev/null 2>&1; then
   echo "Bootstraping Vim"
-  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
