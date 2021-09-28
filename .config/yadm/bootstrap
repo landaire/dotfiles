@@ -32,6 +32,19 @@ if [ -d "$HOME/.vscode" ]; then
 fi
 
 if command -v nvim >/dev/null 2>&1; then
-  echo "Bootstraping neovim"
+  echo "Bootstrapping neovim"
   nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
+if ! command -v rustc >/dev/null 2>&1; then
+  echo "Bootstrapping Rust tools"
+
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  rustup install nightly
+fi
+
+if command -v cargo >/dev/null 2>&1; then
+  echo "Bootstrapping Rust community tools"
+
+  cargo install --force tldr
 fi
