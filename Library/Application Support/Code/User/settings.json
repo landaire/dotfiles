@@ -1,0 +1,30 @@
+{
+    "rust.build_lib": true,
+    "rust.clippy_preference": "on",
+    "editor.fontFamily": "Hack",
+    "workbench.sideBar.location": "right",
+    "rust.all_features": true,
+    "rust-analyzer.enableEnhancedTyping": false,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "matklad.rust-analyzer"
+    },
+    "editor.rulers": [
+    80, 120
+    ],
+    "workbench.colorTheme": "MuPanda",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    }
+}
