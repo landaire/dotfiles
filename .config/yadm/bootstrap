@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+system_type=$(uname -s)
+
 if [ "$system_type" = "Darwin" ]; then
   echo "Bootstrapping for macOS"
 
@@ -16,16 +18,16 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
-if [ -f "$HOME/.vscode/" ]; then
+if [ -d "$HOME/.vscode" ]; then
   echo "Installing manual VSCode extensions"
 
   if command -v deno >/dev/null 2>&1; then
     git clone --depth 1 https://github.com/Veykril/MuPanda.git $HOME/.vscode/extensions/MuPanda
-    PREV_PATH="$PWD"
+    prev_path="$PWD"
     cd $HOME/.vscode/MuPanda
     deno run --allow-read --allow-write build.ts
     vsce package
-    cd "$PREV_PATH"
+    cd "$prev_path"
   fi
 fi
 
