@@ -24,6 +24,7 @@ alias prettyjson="python -m json.tool"
 alias fix='echo -e "\e<"; reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gc='git commit -m'
 alias ls='lsd'
+alias vim='nvim'
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 make_venv() { python3 -m venv "$HOME/.virtualenvs/$1" }
 load_venv() { source "$HOME/.virtualenvs/$1/bin/activate" }
