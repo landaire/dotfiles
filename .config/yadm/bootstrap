@@ -16,7 +16,7 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
-if [ -f "$HOME/.vscode" ]; then
+if [ -f "$HOME/.vscode/" ]; then
   echo "Installing manual VSCode extensions"
 
   if command -v deno >/dev/null 2>&1; then
