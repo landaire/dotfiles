@@ -21,10 +21,12 @@ fi
 if [ -d "$HOME/.vscode" ]; then
   echo "Installing manual VSCode extensions"
 
+  extensions_path="$HOME/.vscode/extensions"
+
   if command -v deno >/dev/null 2>&1; then
-    git clone --depth 1 https://github.com/Veykril/MuPanda.git $HOME/.vscode/extensions/MuPanda
+    git clone --depth 1 https://github.com/Veykril/MuPanda.git "$extensions_path/MuPanda"
     prev_path="$PWD"
-    cd $HOME/.vscode/MuPanda
+    cd "$extensions_path/MuPanda"
     deno run --allow-read --allow-write build.ts
     vsce package
     cd "$prev_path"

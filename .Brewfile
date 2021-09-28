@@ -1,5 +1,6 @@
 brew "diff-so-fancy"
 brew "delta"
+brew "deno"
 brew "dog"
 brew "dust"
 brew "exa"
