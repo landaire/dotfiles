@@ -223,4 +223,3 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(rbenv init -)"
