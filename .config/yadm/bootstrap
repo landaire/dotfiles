@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
 if [ "$system_type" = "Darwin" ]; then
+  echo "Bootstrapping for macOS"
+
   # install homebrew if it's missing
   if ! command -v brew >/dev/null 2>&1; then
     echo "Installing homebrew"
@@ -14,7 +16,20 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
+if [ -f "$HOME/.vscode" ]; then
+  echo "Installing manual VSCode extensions"
+
+  if command -v deno >/dev/null 2>&1; then
+    git clone --depth 1 https://github.com/Veykril/MuPanda.git $HOME/.vscode/extensions/MuPanda
+    PREV_PATH="$PWD"
+    cd $HOME/.vscode/MuPanda
+    deno run --allow-read --allow-write build.ts
+    vsce package
+    cd "$PREV_PATH"
+  fi
+fi
+
 if command -v nvim >/dev/null 2>&1; then
-  echo "Bootstraping Vim"
+  echo "Bootstraping neovim"
   nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
