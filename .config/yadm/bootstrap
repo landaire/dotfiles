@@ -46,5 +46,5 @@ fi
 if command -v cargo >/dev/null 2>&1; then
   echo "Bootstrapping Rust community tools"
 
-  cargo install --force tldr
+  #cargo install --force tldr
 fi
