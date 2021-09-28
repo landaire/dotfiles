@@ -1,0 +1,19 @@
+[core]
+	excludesfile = /Users/hvx/.gitignore_global
+	editor = nvim
+
+[user]
+	name = Lander Brandt
+	email = landerbrandt@gmail.com
+
+[init]
+	defaultBranch = main
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive^
