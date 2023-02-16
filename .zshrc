@@ -1,4 +1,6 @@
-source $HOME/.antigen/antigen.zsh
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 source $HOME/.profile
 
 export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:$HOME/go/bin"
@@ -55,24 +57,23 @@ setopt sharehistory         # share history across shells
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
-bindkey -v
+#bindkey -v
 
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 
 # enable vi keybindings
-bindkey -e
+#bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-PURE_PROMPT_SYMBOL=\$
 
-antigen bundle mafredri/zsh-async
-#antigen bundle sindresorhus/pure
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "softmoth/zsh-vim-mode"
 
-antigen apply
+zplug load
 
 # bind UP and DOWN arrow keys -- this is for history substring search
 zmodload zsh/terminfo
@@ -215,7 +216,7 @@ function tmux() {
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 source ~/.credentials
 
-source /Users/hvx/Library/Preferences/org.dystroy.broot/launcher/bash/br
+#source /Users/hvx/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -223,3 +224,10 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lander/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lander/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lander/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lander/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
